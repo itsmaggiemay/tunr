@@ -1,0 +1,24 @@
+<h3>Add a new song!</h3>
+<form action="/songs" method="POST">
+	<label for="title">Title<br>
+		<input type="text" name="song[title]">
+	</label><br>
+
+	<label for="artist">Artist<br>
+		<select name="song[artist_id]">
+			<% @artists.each do |artist| %>
+				<option value="<%= artist.id %>"><%= artist.name %></option>
+			<% end %>
+		</select>
+	</label><br>
+
+	<label for="album">Album<br>
+		<input type="text" name="song[album]">
+	</label><br>
+
+	<label for="artwork">Album Art<br>
+		<input type="text" name="song[artwork]">
+	</label><br>
+	
+	<input type="submit" name="submit">
+</form>

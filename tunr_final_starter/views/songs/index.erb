@@ -1,0 +1,10 @@
+<p><a href="/songs/new">Add a song?</a></p>
+<% @songs.each do |song| %>
+	<div class="single song">
+		<h2><%= song.id %> | <%= song.title %></h2>
+		<img src="<%= song.artwork %>">
+		<p><%= song.artist.name %></p>
+		<p><%= song.album %></p>
+		<a href="/songs/<%= song.id %>">View Song</a>
+	</div>
+<% end %>

@@ -1,0 +1,20 @@
+<h1><%= @artist.name %></h1>
+<p><img src="<%= @artist.photo_url %>" width=400 ></p>
+<p><%= @artist.nationality %></p>
+
+<form action="/artists/<%= @artist.id %>" method="POST">
+	<input type="hidden" name="_method" value="DELETE">
+	<button>DELETE</button>
+</form>
+
+<% @artist.songs.each do |song| %>
+	<div class="single song">
+		<h2><%= song.title %></h2>
+		<h4><%= song.artist.name %></h4>
+		<img src="<%= song.artwork %>" alt="">
+		<p><%= song.album %></p>
+		<a href="/songs/<%= song.id %>">View</a>
+	</div>
+<% end %>
+
+

@@ -1,0 +1,31 @@
+<h3>Edit a song!</h3>
+<form action="/songs/<%= @song.id %>" method="POST">
+	<input type="hidden" name="_method" value="PUT">
+
+	<label for="title">Title<br>
+		<input type="text" name="song[title]" value="<%= @song.title %>">
+	</label><br>
+
+	<label for="artist">Artist<br>
+		<select name="song[artist_id]">
+			<% @artists.each do |artist| %>
+				<option <%= "selected" if artist == @song.artist %> value="<%= artist.id %>"><%= artist.name %></option>			
+			<% end %>
+		</select>
+	</label><br>
+
+	<label for="album">Album<br>
+		<input type="text" name="song[album]" value="<%= @song.album %>">
+	</label><br>
+
+	<label for="artwork">Album Art<br>
+		<input type="text" name="song[artwork]" value="<%= @song.artwork %>">
+	</label><br>
+
+	<input type="submit" name="submit">
+</form>
+
+<form action="/songs/<%= @song.id %>" method="POST">
+	<input type="hidden" name="_method" value="DELETE">
+	<button>DELETE</button>
+</form>

@@ -1,0 +1,12 @@
+<p><a href="/artists/new">Add a new Artist?</a></p>
+<% @artists.each do |artist| %>
+	<div class="artist all">
+		<h1><%= artist.name %></h1>
+		<div>
+			<img src="<%= artist.photo_url %>" width=400>
+			<p>
+				<%= artist.nationality %> | <a href="/artists/<%= artist.id %>">View</a>
+			</p>
+		</div>
+	</div>
+<% end %>

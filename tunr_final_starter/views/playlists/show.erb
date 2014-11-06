@@ -1,0 +1,40 @@
+<h2><%= @playlist.name %> </h2>
+<div style="width:95%; margin: 0 auto; ">
+<% @playlist.songs.each do |song| %>
+  <div class="playlist song">
+    <h4> 
+      <%= song.title %> |
+      <span>
+        <form action="/playlists/<%= @playlist.id %>/remove_song" method="post">
+          <input type="hidden" name="_method" value="put">
+          <input type="hidden" name="song_id" value="<%= song.id %>">
+          <input type="submit" value="Remove">
+        </form>
+      </span>
+    </h4>
+
+      <p>
+    <audio controls>
+      <source src="<%= song.preview_url %>"></source>
+    </audio>
+  </p>
+
+  </div>
+<% end %>
+</div>
+ <form action="/playlists/<%= @playlist.id %>/add_song" method="post">
+  <input type="hidden" name="_method" value="put">
+    <select name="song_id">
+      <% @songs.each do |song| %>
+        <option value="<%= song.id %>"><%= song.title %></option>
+      <% end %>
+    </select>
+    <input type="submit" value="Add Track">
+  </form>
+
+  <a href="/playlists">Back to playlists</a>
+  <br>
+  <form action="/playlists/<%= @playlist.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="DELETE PLAYLIST!">
+  </form>
